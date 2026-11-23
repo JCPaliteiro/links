@@ -85,16 +85,21 @@ footer a{color:var(--gold);text-decoration:none;letter-spacing:.06em}
   <blockquote>“Na Luz Divina está tudo o que precisas”</blockquote>
 
   <nav>
-    <a class="btn hl by" data-o href="https://divinespaces.joaopaliteiro.com/">
+    <a class="btn hl by" data-o data-ate="2026-11-18T00:00:00Z" href="https://divinespaces.joaopaliteiro.com/">
       <img src="divine-spaces-icone.png" alt="" style="width:40px;height:53px">
       <span><span class="tag">Curso novo · 18, 21 e 25 nov</span><br>
       <b>Curso Divine Spaces™</b>
       <small>Cura, Libertação e Consagração de Casas e Espaços · Online pelo Zoom</small></span>
     </a>
-    <a class="btn" data-o href="https://lives.joaopaliteiro.com/">
+    <a class="btn" data-o data-ate="2026-11-24T00:00:00Z" href="https://lives.joaopaliteiro.com/">
       <span class="tag">Inscrições abertas</span>
       <b>Live em Presença · A Entrega</b>
       <small>Segunda, 23 nov · 21h (PT) · 18h (BR) · gratuita · inscreve-te</small>
+    </a>
+    <a class="btn" data-o data-desde="2026-11-24T00:00:00Z" data-ate="2026-12-22T00:00:00Z" href="https://lives.joaopaliteiro.com/">
+      <span class="tag">Próxima Live · Solstício</span>
+      <b>Live em Presença · O Amor de Jesus</b>
+      <small>Segunda, 21 dez · gratuita · inscreve-te</small>
     </a>
     <a class="btn" data-o href="https://dashboard.mailerlite.com/forms/909226/200523205818976052/share">
       <b>Presente · Ativação do Equilíbrio</b>
@@ -126,6 +131,16 @@ footer a{color:var(--gold);text-decoration:none;letter-spacing:.06em}
   </footer>
 </main>
 <script>
+// Validade automática: data-desde="AAAA-MM-DDTHH:MM:SSZ" (aparece a partir de) e data-ate="…" (desaparece a partir de), em hora UTC (= Lisboa no inverno)
+(function(){
+  try{
+    var agora=Date.now();
+    document.querySelectorAll('[data-desde],[data-ate]').forEach(function(el){
+      var d=el.getAttribute('data-desde'), a=el.getAttribute('data-ate');
+      if((d && agora<Date.parse(d)) || (a && agora>=Date.parse(a))) el.remove();
+    });
+  }catch(e){}
+})();
 // Etiqueta de origem: links.joaopaliteiro.com/?origem=ig passa "origem=ig" para os links próprios
 (function(){
   try{
